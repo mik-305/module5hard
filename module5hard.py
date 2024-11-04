@@ -19,8 +19,13 @@ class Video:
         self.adult_mode = adult_mode
 
 class UrTube:
-    users = ''             # список объектов User
-    videos = {}            # список объектов Video
+    """def __init__(self): #, users, videos, current_user):
+        self.users = users
+        self.videos = videos
+        self.current_user = current_user       # текущий пользователь
+    """
+    users = ''                                # список объектов User
+    videos = []                               # список объектов Video
 
     def log_in(self, nickname, password):
         pass
@@ -28,17 +33,33 @@ class UrTube:
         pass
     def log_out(self):
         current_user = 'None'   # Сбрасываем текущего пользователя
-    def add(self, *Video):
-        #if Video.title in videos:
-        #videos = {}
-        print(v1.title, '- два объекта -', v2.title)
-        #pass
+    def add(self, *video):
+        for i in video:
+#            print(i.title, i.duration)
+            self.videos.append(i.title)     # Записали названия фильмов
+        #print(type(video))
+#        print('Тип Videos -=_>',type(self.videos))
+#        print('Длина Videos >>>', len(self.videos))
+        #print('Добавление videos ---', self.videos)
+#        for j in self.videos:
+#            print('videos=====>', j)
+
     def get_videos(self, poisk_vid):    # Поисковое слово  poisk_vid
-        pass
+        print(poisk_vid)
+        print(list(self.videos))
+        if self.videos.__contains__(poisk_vid):
+        #if poisk_vid in self.videos:
+            print('777')
+            #print(f'Поисковое слово --->,{poisk_vid}')
+            #pass
     def watch_video(self, video):
         pass
 
 ur = UrTube()
 v1 = Video('Лучший язык программирования 2024 года', 200)
 v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
+
 ur.add(v1, v2)
+
+print(ur.get_videos('Лучший'))
+print(ur.get_videos('ПРОГ'))
